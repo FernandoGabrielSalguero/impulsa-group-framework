@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>UI Framework Fernando Salguero</title>
+
+  <!-- Material Icons CDN -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <!-- Framework CSS -->
+  <link rel="stylesheet" href="assets/css/framework.css">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f9f9f9;
+      margin: 0;
+      padding: 2rem;
+      color: #333;
+    }
+
+    h1,
+    h2,
+    h3 {
+      color: #5b21b6;
+    }
+
+    code {
+      background: #eee;
+      padding: 0.2rem 0.4rem;
+      border-radius: 5px;
+      font-family: monospace;
+    }
+
+    pre {
+      background: #eee;
+      padding: 1rem;
+      border-radius: 8px;
+      overflow-x: auto;
+    }
+
+    section {
+      margin-bottom: 2rem;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 0.2rem 0.5rem;
+      background: #ddd;
+      border-radius: 5px;
+      font-size: 0.8rem;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="layout">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <span class="material-icons logo-icon">dashboard</span>
+        <span class="logo-text">Fer</span>
+      </div>
+
+      <nav class="sidebar-menu">
+        <ul>
+          <li onclick="location.href='index.html'"><span class="material-icons">home</span><span
+              class="link-text">Inicio</span></li>
+          <li><span class="material-icons">dashboard</span><span class="link-text">Dashboard</span></li>
+          <li><span class="material-icons">folder</span><span class="link-text">Proyectos</span></li>
+          <li><span class="material-icons">calendar_today</span><span class="link-text">Calendario</span></li>
+          <li><span class="material-icons">email</span><span class="link-text">Correo</span></li>
+          <li><span class="material-icons">bar_chart</span><span class="link-text">Reportes</span></li>
+          <li>
+            <a href="https://www.fernandosalguero.com/cdn/documentation.html" target="_blank"
+              style="display: flex; align-items: center; gap: 1rem; text-decoration: none; color: inherit;">
+              <span class="material-icons">description</span>
+              <span class="link-text">Documentación</span>
+            </a>
+        </ul>
+      </nav>
+
+      <div class="sidebar-footer">
+        <button class="btn-icon" onclick="toggleSidebar()">
+          <span class="material-icons" id="collapseIcon">chevron_left</span>
+        </button>
+      </div>
+    </aside>
+
+    <div class="main">
+      <header class="navbar">
+        <button class="btn-icon" onclick="toggleSidebar()">
+          <span class="material-icons">menu</span>
+        </button>
+        <div class="navbar-title">Mi Dashboard</div>
+      </header>
+
+      <section class="content">
+        <div class="card">
+          <h1>📘 UI Framework - Success</h1>
+          <p>Framework ligero, accesible y moderno creado por Fernando Salguero para prototipado rápido, dashboards y
+            sistemas de administración.</p>
+
+          <section>
+            <h2>📦 Instalación</h2>
+            <h3>✅ CDN (recomendado)</h3>
+            <pre><code>&lt;link rel="stylesheet" href="https://www.fernandosalguero.com/cdn/assets/css/framework.css"&gt;
+            &lt;script src="https://www.fernandosalguero.com/cdn/assets/javascript/framework.js" defer&gt;&lt;/script&gt;
+            &lt;script src="https://www.fernandosalguero.com/cdn/assets/javascript/spinner-global.js"&gt;&lt;/script&gt;</code></pre>
+
+            <h3>🗂️ Carpeta local</h3>
+            <pre><code>/assets
+            ├── css/
+            │   └── framework.css
+            ├── javascript/
+            │   └── framework.js
+            ├── components/
+            │   └── spinner-global.js</code></pre>
+          </section>
+
+
+          <section>
+            <h2>🎛️ Variables globales</h2>
+            <pre><code>:root {
+  --primary-color: #5b21b6;
+  --sidebar-bg: #fff;
+  --text-color: #333;
+  --icon-color: #5b21b6;
+  --border-radius: 12px;
+  --font-family: 'Segoe UI', sans-serif;
+}</code></pre>
+            <p>Podés sobreescribirlas directamente desde un archivo `theme.css` o en un bloque luego del CSS del
+              framework. </p>
+          </section>
+
+          <section>
+            <h2>🧩 Clases disponibles</h2>
+            <ul>
+              <li><code>.layout</code> – contenedor base general</li>
+              <li><code>.sidebar</code> y <code>.sidebar.collapsed</code> – menú lateral</li>
+              <li><code>.navbar</code> – encabezado superior</li>
+              <li><code>.card</code> – tarjetas visuales</li>
+              <li><code>.form-modern</code> – formularios con estilo moderno</li>
+              <li><code>.input-icon</code> – input con íconos</li>
+              <li><code>.btn</code>, <code>.btn-aceptar</code>, <code>.btn-cancelar</code>, <code>.btn-info</code></li>
+              <li><code>.floating-alert</code> – alertas flotantes</li>
+              <li><code>.modal</code> – ventanas emergentes (modales)</li>
+              <li><code>.card-grid grid-[n]</code> – sistema de columnas para tarjetas (2, 3 o 4)</li>
+              <li><code>.tabs</code>, <code>.accordion</code>, <code>.switch</code> – componentes interactivos</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>📚 Componentes listos para usar</h2>
+            <p><strong>¡En la siguiente sección encontrarás cada componente con su explicación, personalización y
+                ejemplo listo para copiar!</strong></p>
+            <!-- Pestañas principales -->
+            <div class="tabs">
+              <div class="tab-buttons">
+                <button class="tab-button active" data-tab="basicos">Básicos</button>
+                <button class="tab-button" data-tab="formularios">Formularios</button>
+                <button class="tab-button" data-tab="interaccion">Interacción</button>
+                <button class="tab-button" data-tab="estructura">Estructura</button>
+              </div>
+
+              <!-- TAB 1: BÁSICOS -->
+              <div class="tab-content active" id="basicos">
+                <div class="accordion">
+                  <details>
+                    <summary>🎨 Botones</summary>
+                    <p>Clases: <code>.btn</code>, <code>.btn-aceptar</code>, <code>.btn-cancelar</code>,
+                      <code>.btn-info</code>
+                    </p>
+                    <p>Botones semánticos listos para usar con colores distintos y hover. Se pueden personalizar desde
+                      <code>:root</code>.
+                    </p>
+                    <pre><code>&lt;button class="btn btn-aceptar"&gt;Aceptar&lt;/button&gt;
+&lt;button class="btn btn-cancelar"&gt;Cancelar&lt;/button&gt;
+&lt;button class="btn btn-info"&gt;Más info&lt;/button&gt;</code></pre>
+                  </details>
+
+                  <details>
+                    <summary>📦 Tarjetas</summary>
+                    <p>Clases: <code>.card</code> / <code>.card-grid grid-2/3/4</code></p>
+                    <p>Contenedores visuales para destacar contenido. Agrupá múltiples en columnas usando la clase
+                      <code>.card-grid</code>.
+                    </p>
+                    <pre><code>&lt;div class="card"&gt;
+  &lt;h3&gt;Título&lt;/h3&gt;
+  &lt;p&gt;Contenido&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+                  </details>
+                </div>
+              </div>
+
+              <!-- TAB 2: FORMULARIOS -->
+              <div class="tab-content" id="formularios">
+                <div class="accordion">
+
+                  <details>
+                    <summary>✏️ Inputs con ícono</summary>
+                    <p>Clases: <code>.input-icon</code></p>
+                    <p>Inputs estilizados con íconos de Material. Se integran en <code>.form-modern</code>.</p>
+                    <pre><code>&lt;div class="input-group"&gt;
+  &lt;label&gt;Nombre&lt;/label&gt;
+  &lt;div class="input-icon"&gt;
+    &lt;span class="material-icons"&gt;person&lt;/span&gt;
+    &lt;input type="text" placeholder="Nombre completo"&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                  </details>
+
+                  <details>
+                    <summary>✅ Inputs validados</summary>
+                    <p>Detecta errores en campos vacíos o inválidos y muestra una leyenda en rojo. Se oculta al
+                      corregir.</p>
+                    <pre><code>&lt;div class="input-group"&gt;
+  &lt;label&gt;Edad (mínimo 18)&lt;/label&gt;
+  &lt;div class="input-icon"&gt;
+    &lt;span class="material-icons"&gt;calendar_today&lt;/span&gt;
+    &lt;input type="number" id="edad" min="18" required&gt;
+  &lt;/div&gt;
+  &lt;small class="error-message hidden"&gt;Debés ser mayor de edad.&lt;/small&gt;
+&lt;/div&gt;</code></pre>
+                  </details>
+
+                  <details>
+                    <summary>📌 Select personalizado con búsqueda</summary>
+                    <p>Simula un select moderno con íconos y búsqueda opcional.</p>
+                    <pre><code>&lt;div class="custom-select"&gt;
+  &lt;input type="text" placeholder="Buscar país..." onkeyup="filtrarOpciones(this)"&gt;
+  &lt;ul class="select-options"&gt;
+    &lt;li&gt;&lt;span class="material-icons"&gt;flag&lt;/span&gt; Argentina&lt;/li&gt;
+    &lt;li&gt;&lt;span class="material-icons"&gt;flag&lt;/span&gt; Uruguay&lt;/li&gt;
+    &lt;li&gt;&lt;span class="material-icons"&gt;flag&lt;/span&gt; Chile&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;</code></pre>
+                  </details>
+
+                </div>
+              </div>
+
+              <!-- TAB 3: INTERACCIÓN -->
+              <div class="tab-content" id="interaccion">
+                <div class="accordion">
+
+                  <details>
+                    <summary>🔔 Alertas flotantes</summary>
+                    <p>Llamado JS: <code>showAlert('success', 'Mensaje')</code></p>
+                    <pre><code>&lt;button onclick="showAlert('info', 'Este es un mensaje informativo')" class="btn btn-info"&gt;
+  Mostrar alerta
+&lt;/button&gt;</code></pre>
+                  </details>
+
+                  <details>
+                    <summary>💬 Modal</summary>
+                    <p>Modales simples y centrados. Se abren con <code>openModal()</code> y cierran con
+                      <code>closeModal()</code>.
+                    </p>
+                    <pre><code>&lt;div class="modal hidden" id="modalEjemplo"&gt;
+  &lt;div class="modal-content"&gt;
+    &lt;h3&gt;Título&lt;/h3&gt;
+    &lt;p&gt;Contenido del modal&lt;/p&gt;
+    &lt;button onclick="closeModal()"&gt;Cerrar&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                  </details>
+
+                  <details>
+                    <summary>🌀 Spinner Global</summary>
+                    <p>Clases: <code>.spinner-overlay</code> + <code>.spinner</code> | Funciones:
+                      <code>showSpinner()</code>, <code>hideSpinner()</code>
+                    </p>
+                    <pre><code>&lt;div id="globalSpinner" class="spinner-overlay hidden"&gt;
+  &lt;div class="spinner"&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                  </details>
+
+                  <details>
+                    <summary>🧭 Tooltips</summary>
+                    <p>Agregá <code>data-tooltip</code> a cualquier elemento para mostrar un mensaje contextual.</p>
+                    <pre><code>&lt;button class="btn" data-tooltip="Guardar cambios"&gt;
+  Guardar
+&lt;/button&gt;</code></pre>
+                  </details>
+
+                </div>
+              </div>
+
+              <!-- TAB 4: ESTRUCTURA -->
+              <div class="tab-content" id="estructura">
+                <div class="accordion">
+
+                  <details>
+                    <summary>📑 Tabs</summary>
+                    <p>Dividí contenido en secciones fácilmente. Activación automática incluida.</p>
+                    <pre><code>&lt;div class="tabs"&gt;
+  &lt;div class="tab-buttons"&gt;
+    &lt;button class="tab-button active" data-tab="uno"&gt;Uno&lt;/button&gt;
+    &lt;button class="tab-button" data-tab="dos"&gt;Dos&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class="tab-content active" id="uno"&gt;Contenido uno&lt;/div&gt;
+  &lt;div class="tab-content" id="dos"&gt;Contenido dos&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                  </details>
+
+                  <details>
+                    <summary>📂 Acordeones</summary>
+                    <p>Ideal para mostrar contenido expandible. Basado en <code>&lt;details&gt;</code>.</p>
+                    <pre><code>&lt;details&gt;
+  &lt;summary&gt;Haz clic aquí&lt;/summary&gt;
+  &lt;p&gt;Contenido oculto&lt;/p&gt;
+&lt;/details&gt;</code></pre>
+                  </details>
+
+                  <details>
+                    <summary>🧱 Distribución de tarjetas</summary>
+                    <p>Utilizá <code>.card-grid grid-2</code> / <code>grid-3</code> / <code>grid-4</code> para organizar
+                      en columnas responsivas.</p>
+                    <pre><code>&lt;div class="card-grid grid-3"&gt;
+  &lt;div class="card"&gt;Tarjeta 1&lt;/div&gt;
+  &lt;div class="card"&gt;Tarjeta 2&lt;/div&gt;
+  &lt;div class="card"&gt;Tarjeta 3&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                  </details>
+
+                </div>
+
+
+
+                <details>
+                  <summary>📄 Plantilla base del proyecto</summary>
+                  <p>Esta plantilla ya incluye el header, sidebar, layout y un formulario funcional. Ideal para comenzar
+                    un nuevo proyecto con Success sin configuraciones extras.</p>
+                  <pre><code>&lt;!DOCTYPE html&gt;
+                &lt;html lang="es"&gt;
+                
+                &lt;head&gt;
+                  &lt;meta charset="UTF-8" /&gt;
+                  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+                  &lt;title&gt;Mi Proyecto con Success&lt;/title&gt;
+                
+                  &lt;!-- Íconos de Material Design --&gt;
+                  &lt;link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" /&gt;
+                
+                  &lt;!-- Framework Success desde CDN --&gt;
+                  &lt;link rel="stylesheet" href="https://www.fernandosalguero.com/cdn/assets/css/framework.css"&gt;
+                  &lt;script src="https://www.fernandosalguero.com/cdn/assets/javascript/framework.js" defer&gt;&lt;/script&gt;
+                &lt;/head&gt;
+                
+                &lt;body&gt;
+                
+                  &lt;!-- 🔲 CONTENEDOR PRINCIPAL --&gt;
+                  &lt;div class="layout"&gt;
+                
+                    &lt;!-- 🧭 SIDEBAR --&gt;
+                    &lt;aside class="sidebar" id="sidebar"&gt;
+                      &lt;div class="sidebar-header"&gt;
+                        &lt;span class="material-icons logo-icon"&gt;dashboard&lt;/span&gt;
+                        &lt;span class="logo-text"&gt;Success&lt;/span&gt;
+                      &lt;/div&gt;
+                
+                      &lt;nav class="sidebar-menu"&gt;
+                        &lt;ul&gt;
+                          &lt;li onclick="location.href='index.html'"&gt;
+                            &lt;span class="material-icons"&gt;home&lt;/span&gt;&lt;span class="link-text"&gt;Inicio&lt;/span&gt;
+                          &lt;/li&gt;
+                          &lt;li onclick="location.href='documentacion.html'"&gt;
+                            &lt;span class="material-icons"&gt;description&lt;/span&gt;&lt;span class="link-text"&gt;Documentación&lt;/span&gt;
+                          &lt;/li&gt;
+                        &lt;/ul&gt;
+                      &lt;/nav&gt;
+                
+                      &lt;div class="sidebar-footer"&gt;
+                        &lt;button class="btn-icon" onclick="toggleSidebar()"&gt;
+                          &lt;span class="material-icons" id="collapseIcon"&gt;chevron_left&lt;/span&gt;
+                        &lt;/button&gt;
+                      &lt;/div&gt;
+                    &lt;/aside&gt;
+                
+                    &lt;!-- 🧱 MAIN --&gt;
+                    &lt;div class="main"&gt;
+                
+                      &lt;!-- 🟪 NAVBAR --&gt;
+                      &lt;header class="navbar"&gt;
+                        &lt;button class="btn-icon" onclick="toggleSidebar()"&gt;
+                          &lt;span class="material-icons"&gt;menu&lt;/span&gt;
+                        &lt;/button&gt;
+                        &lt;div class="navbar-title"&gt;Mi Proyecto&lt;/div&gt;
+                      &lt;/header&gt;
+                
+                      &lt;!-- 📦 CONTENIDO --&gt;
+                      &lt;section class="content"&gt;
+                
+                        &lt;div class="card"&gt;
+                          &lt;h2&gt;¡Hola! 👋&lt;/h2&gt;
+                          &lt;p&gt;Esta es una tarjeta de bienvenida para empezar tu diseño.&lt;/p&gt;
+                        &lt;/div&gt;
+                
+                        &lt;div class="card"&gt;
+                          &lt;form class="form-modern"&gt;
+                            &lt;div class="input-group"&gt;
+                              &lt;label&gt;Correo&lt;/label&gt;
+                              &lt;div class="input-icon"&gt;
+                                &lt;span class="material-icons"&gt;mail&lt;/span&gt;
+                                &lt;input type="email" placeholder="ejemplo@correo.com"&gt;
+                              &lt;/div&gt;
+                            &lt;/div&gt;
+                
+                            &lt;div class="form-buttons"&gt;
+                              &lt;button class="btn btn-aceptar" type="submit"&gt;Enviar&lt;/button&gt;
+                              &lt;button class="btn btn-cancelar" type="button"&gt;Cancelar&lt;/button&gt;
+                            &lt;/div&gt;
+                          &lt;/form&gt;
+                        &lt;/div&gt;
+                
+                      &lt;/section&gt;
+                
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+                
+                &lt;/body&gt;
+                
+                &lt;/html&gt;
+                </code></pre>
+                </details>
+              </div>
+            </div>
+
+          </section>
+
+
+
+          <section>
+            <h2>📍 Créditos</h2>
+            <p>Hecho con 💜 por Fernando Salguero. Inspirado en Material Design y sistemas de diseño modernos.</p>
+            <p>Repositorio y actualizaciones en <a href="https://www.fernandosalguero.com"
+                target="_blank">fernandosalguero.com</a></p>
+          </section>
+
+        </div>
+
+        <div class="alert-container" id="alertContainer"></div>
+      </section>
+    </div>
+  </div>
+
+  <!-- Modal para alertas -->
+  <div id="modal" class="modal hidden">
+    <div class="modal-content">
+      <h3>Título del modal</h3>
+      <p>Este es un ejemplo de modal simple y responsive.</p>
+      <div class="form-buttons">
+        <button class="btn btn-aceptar" onclick="closeModal()">Aceptar</button>
+        <button class="btn btn-cancelar" onclick="closeModal()">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- JS del framework -->
+  <script src="assets/javascript/framework.js"></script>
+</body>
+
+</html>
