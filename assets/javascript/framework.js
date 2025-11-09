@@ -57,78 +57,47 @@ function initTabs() {
     });
 }
 
-/* ---------- Input Icons + validaciones mínimas ---------- */
+/* ---------- Input Icons + validaciones mínimas (DRY) ---------- */
 function initInputIcons() {
-    const mappings = {
-        "input-icon-name": "person",
-        "input-icon-dni": "badge",
-        "input-icon-age": "hourglass_bottom",
-        "input-icon-email": "mail",
-        "input-icon-phone": "phone",
-        "input-icon-date": "event",
-        "input-icon-address": "home",
-        "input-icon-cuit": "badge",
-        "input-icon-cp": "markunread_mailbox",
-        "input-icon-globe": "public",
-        "input-icon-city": "location_city",
-        "input-icon-comment": "comment"
+    const config = {
+        "input-icon-name": { icon: "person", attrs: { type: "text", minLength: 2, maxLength: 60, required: true } },
+        "input-icon-dni": { icon: "badge", attrs: { type: "text", maxLength: 8, pattern: '^[0-9]{7,8}$', inputMode: 'numeric', required: true } },
+        "input-icon-age": { icon: "hourglass_bottom", attrs: { type: "number", min: "0", max: "120", required: true } },
+        "input-icon-email": { icon: "mail", attrs: { type: "email", required: true } },
+        "input-icon-phone": { icon: "phone", attrs: { type: "tel", pattern: '[0-9\\+\\-\\s]{7,20}', inputMode: 'tel', required: true } },
+        "input-icon-date": { icon: "event", attrs: { type: "date", required: true } },
+        "input-icon-address": { icon: "home", attrs: { type: "text", required: true } },
+        "input-icon-cuit": { icon: "badge", attrs: { type: "text", pattern: '^[0-9]{2}-[0-9]{8}-[0-9]{1}$', required: true } },
+        "input-icon-cp": { icon: "markunread_mailbox", attrs: { type: "text", pattern: '^[0-9]{4,6}$', required: true } },
+        "input-icon-globe": { icon: "public", attrs: { required: true } },
+        "input-icon-city": { icon: "location_city", attrs: { type: "text", required: true } },
+        "input-icon-comment": { icon: "comment", attrs: { maxLength: 233, required: true } }
     };
 
     $$('.input-icon').forEach(wrapper => {
         const input = wrapper.querySelector('input, select, textarea');
         if (!input) return;
 
-        // Insertar ícono si no existe
-        if (!wrapper.querySelector('span.material-icons')) {
-            const icon = document.createElement('span');
-            icon.classList.add('material-icons');
-            for (const cls in mappings) {
-                if (wrapper.classList.contains(cls)) icon.textContent = mappings[cls];
-            }
-            if (!icon.textContent) icon.textContent = 'input';
-            wrapper.prepend(icon);
+        // Detectar configuración por clase
+        let cfg;
+        for (const cls in config) {
+            if (wrapper.classList.contains(cls)) { cfg = config[cls]; break; }
         }
 
-        // Atributos por tipo
-        if (wrapper.classList.contains('input-icon-dni')) {
-            input.type = 'text';
-            input.maxLength = 8;
-            input.pattern = '^[0-9]{7,8}$';
-            input.inputMode = 'numeric';
-            input.required = true;
+        // Insertar ícono si corresponde
+        if (!wrapper.querySelector('span.material-icons')) {
+            const iconEl = document.createElement('span');
+            iconEl.classList.add('material-icons');
+            iconEl.textContent = cfg?.icon || 'input';
+            wrapper.prepend(iconEl);
         }
-        if (wrapper.classList.contains('input-icon-age')) {
-            input.type = 'number'; input.min = '0'; input.max = '120'; input.required = true;
-        }
-        if (wrapper.classList.contains('input-icon-name')) {
-            input.type = 'text'; input.minLength = 2; input.maxLength = 60; input.required = true;
-        }
-        if (wrapper.classList.contains('input-icon-email')) {
-            input.type = 'email'; input.required = true;
-        }
-        if (wrapper.classList.contains('input-icon-phone')) {
-            input.type = 'tel'; input.pattern = '[0-9\\+\\-\\s]{7,20}'; input.inputMode = 'tel'; input.required = true;
-        }
-        if (wrapper.classList.contains('input-icon-date')) {
-            input.type = 'date'; input.required = true;
-        }
-        if (wrapper.classList.contains('input-icon-cuit')) {
-            input.type = 'text'; input.pattern = '^[0-9]{2}-[0-9]{8}-[0-9]{1}$'; input.required = true;
-        }
-        if (wrapper.classList.contains('input-icon-cp')) {
-            input.type = 'text'; input.pattern = '^[0-9]{4,6}$'; input.required = true;
-        }
-        if (wrapper.classList.contains('input-icon-address')) {
-            input.type = 'text'; input.required = true;
-        }
-        if (wrapper.classList.contains('input-icon-city')) {
-            input.type = 'text'; input.required = true;
-        }
-        if (wrapper.classList.contains('input-icon-comment')) {
-            input.maxLength = 233; input.required = true;
-        }
-        if (wrapper.classList.contains('input-icon-globe')) {
-            input.required = true;
+
+        // Aplicar atributos declarativos
+        if (cfg && cfg.attrs) {
+            Object.entries(cfg.attrs).forEach(([k, v]) => {
+                if (v === true) input.setAttribute(k, '');
+                else input.setAttribute(k, String(v));
+            });
         }
     });
 }
@@ -173,12 +142,12 @@ function initPublicacionButton() {
     validarCampos();
 }
 
-/* ---------- Acordeón simple ---------- */
+/* ---------- Acordeón simple (sin estilos inline) ---------- */
 function toggleAccordion(element) {
-    const body = element.nextElementSibling;
-    const isOpen = body.style.display === 'block';
-    body.style.display = isOpen ? 'none' : 'block';
-    element.setAttribute('aria-expanded', String(!isOpen));
+    const container = element.closest('.accordion');
+    if (!container) return;
+    const isOpen = container.classList.toggle('open');
+    element.setAttribute('aria-expanded', String(isOpen));
 }
 
 /* ---------- Smart selector (filtro interno) ---------- */
@@ -213,8 +182,13 @@ function showToast(type = 'info', message = 'Mensaje') {
     const toast = document.createElement('div');
     toast.className = `toast ${type}`;
     toast.textContent = message;
+
+    // Remoción más robusta: esperar fin de animación CSS
+    toast.addEventListener('animationend', (e) => {
+        if (e.animationName === 'fadeOut') toast.remove();
+    });
+
     container.appendChild(toast);
-    setTimeout(() => toast.remove(), 5000);
 }
 
 function showToastBoton(type = 'info', message = 'Mensaje') {
@@ -230,15 +204,14 @@ function showToastBoton(type = 'info', message = 'Mensaje') {
     container.appendChild(toast);
 }
 
-/* ---------- Categorías con subniveles ---------- */
+/* ---------- Categorías con subniveles (sin estilos inline) ---------- */
 function toggleSubcategorias(btn) {
     const all = $$('.subcategorias');
-    all.forEach(ul => { if (ul !== btn.nextElementSibling) ul.style.display = 'none'; });
+    all.forEach(ul => { if (ul !== btn.nextElementSibling) ul.classList.remove('open'); });
 
     const sub = btn.nextElementSibling;
-    const isOpen = sub.style.display === 'block';
-    sub.style.display = isOpen ? 'none' : 'block';
-    btn.setAttribute('aria-expanded', String(!isOpen));
+    const isOpen = sub.classList.toggle('open');
+    btn.setAttribute('aria-expanded', String(isOpen));
 }
 
 /* ---------- Inicialización global ---------- */
@@ -253,28 +226,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 /* ---------- Dropdown multiselección con checkboxes ---------- */
-/**
- * Estructura esperada:
- * <div class="dropdown dropdown-multi" data-name="frutas">
- *   <button class="dropdown-toggle">...</button>
- *   <input type="hidden" name="frutas">
- *   <div class="dropdown-panel">
- *     <label class="dropdown-option"><input type="checkbox" value="..."><span>Texto</span></label>
- *     ...
- *   </div>
- * </div>
- */
+/* Sin cambios de API pública; micro-optimizaciones y cierre global */
 function initDropdownMulti() {
     const dropdowns = $$('.dropdown.dropdown-multi');
     if (!dropdowns.length) return;
 
-    // Cierre global al clickear fuera
     document.addEventListener('click', (ev) => {
         dropdowns.forEach(dd => {
             if (!dd.contains(ev.target)) {
                 dd.classList.remove('open');
-                const btn = dd.querySelector('.dropdown-toggle');
-                if (btn) btn.setAttribute('aria-expanded', 'false');
+                dd.querySelector('.dropdown-toggle')?.setAttribute('aria-expanded', 'false');
             }
         });
     });
@@ -283,27 +244,23 @@ function initDropdownMulti() {
         const btn = dd.querySelector('.dropdown-toggle');
         const hidden = dd.querySelector('input[type="hidden"]');
         const checks = dd.querySelectorAll('.dropdown-option input[type="checkbox"]');
-
         if (!btn || !hidden || !checks.length) return;
 
-        // Abrir/cerrar panel
         btn.addEventListener('click', (e) => {
             e.stopPropagation();
             const isOpen = dd.classList.toggle('open');
             btn.setAttribute('aria-expanded', String(isOpen));
         });
 
-        // Actualizar etiqueta y valor serializado (CSV)
         const refresh = () => {
-            const values = Array.from(checks)
-                .filter(c => c.checked)
-                .map(c => c.value.trim());
+            const values = [];
+            checks.forEach(c => { if (c.checked) values.push(c.value.trim()); });
             hidden.value = values.join(',');
             btn.textContent = values.length ? values.join(', ') : 'Seleccioná frutas';
         };
 
         checks.forEach(c => c.addEventListener('change', refresh));
-        // Estado inicial
         refresh();
     });
 }
+

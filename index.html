@@ -15,679 +15,669 @@
 </head>
 
 <body>
+    <!-- Contenedores de toast deben vivir dentro del <body> -->
+    <div id="toast-container" aria-live="polite" aria-atomic="true"></div>
+    <div id="toast-container-boton" aria-live="polite" aria-atomic="true"></div>
 
-    <body>
-        <!-- Contenedores de toast deben vivir dentro del <body> -->
-        <div id="toast-container" aria-live="polite" aria-atomic="true"></div>
-        <div id="toast-container-boton" aria-live="polite" aria-atomic="true"></div>
+    <!-- Contenedor principal -->
+    <div class="layout">
 
-        <!-- Contenedor principal -->
-        <div class="layout">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar" aria-label="Barra lateral de navegación">
+            <div class="sidebar-header">
+                <span class="material-icons logo-icon" aria-hidden="true">dashboard</span>
+                <span class="logo-text">Fer</span>
+            </div>
 
-            <!-- Sidebar -->
-            <aside class="sidebar" id="sidebar" aria-label="Barra lateral de navegación">
-                <div class="sidebar-header">
-                    <span class="material-icons logo-icon" aria-hidden="true">dashboard</span>
-                    <span class="logo-text">Fer</span>
+            <nav class="sidebar-menu" aria-label="Principal">
+                <ul>
+                    <li onclick="location.href='index.html'" role="button" tabindex="0" aria-label="Ir a Inicio">
+                        <span class="material-icons" aria-hidden="true">home</span><span class="link-text">Inicio</span>
+                    </li>
+                    <li><span class="material-icons" aria-hidden="true">dashboard</span><span
+                            class="link-text">Dashboard</span></li>
+                    <li><span class="material-icons" aria-hidden="true">folder</span><span
+                            class="link-text">Proyectos</span></li>
+                    <li><span class="material-icons" aria-hidden="true">calendar_today</span><span
+                            class="link-text">Calendario</span></li>
+                    <li><span class="material-icons" aria-hidden="true">email</span><span
+                            class="link-text">Correo</span></li>
+                    <li><span class="material-icons" aria-hidden="true">bar_chart</span><span
+                            class="link-text">Reportes</span></li>
+                    <li onclick="location.href='documentation.html'" role="button" tabindex="0"
+                        aria-label="Ir a Documentación">
+                        <span class="material-icons" aria-hidden="true">description</span><span
+                            class="link-text">Documentación</span>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="sidebar-footer">
+                <button class="btn-icon" onclick="toggleSidebar()" aria-controls="sidebar" aria-expanded="true">
+                    <span class="material-icons" id="collapseIcon" aria-hidden="true">chevron_left</span>
+                    <span class="sr-only">Contraer/Expandir sidebar</span>
+                </button>
+            </div>
+        </aside>
+
+        <!-- Contenido principal -->
+        <div class="main" id="main-content">
+
+            <!-- header -->
+            <header class="navbar" role="banner">
+                <button class="btn-icon" onclick="toggleSidebar()" aria-controls="sidebar" aria-expanded="true">
+                    <span class="material-icons" aria-hidden="true">menu</span>
+                    <span class="sr-only">Abrir menú</span>
+                </button>
+                <div class="navbar-title">Mi Dashboard</div>
+            </header>
+
+            <!-- cuerpo de la página  -->
+            <section class="content" role="main">
+
+                <!-- Bienvenida -->
+                <div class="card">
+                    <h2>Hola 👋</h2>
+                    <p>Este es un dashboard de ejemplo con un sidebar moderno y responsive versión 9-11.</p>
                 </div>
 
-                <nav class="sidebar-menu" aria-label="Principal">
-                    <ul>
-                        <li onclick="location.href='index.html'" role="button" tabindex="0" aria-label="Ir a Inicio">
-                            <span class="material-icons" aria-hidden="true">home</span><span
-                                class="link-text">Inicio</span>
-                        </li>
-                        <li><span class="material-icons" aria-hidden="true">dashboard</span><span
-                                class="link-text">Dashboard</span></li>
-                        <li><span class="material-icons" aria-hidden="true">folder</span><span
-                                class="link-text">Proyectos</span></li>
-                        <li><span class="material-icons" aria-hidden="true">calendar_today</span><span
-                                class="link-text">Calendario</span></li>
-                        <li><span class="material-icons" aria-hidden="true">email</span><span
-                                class="link-text">Correo</span></li>
-                        <li><span class="material-icons" aria-hidden="true">bar_chart</span><span
-                                class="link-text">Reportes</span></li>
-                        <li onclick="location.href='documentation.html'" role="button" tabindex="0"
-                            aria-label="Ir a Documentación">
-                            <span class="material-icons" aria-hidden="true">description</span><span
-                                class="link-text">Documentación</span>
-                        </li>
-                    </ul>
-                </nav>
+                <!-- Formulario -->
+                <div class="card">
+                    <h2>Formularios</h2>
+                    <form class="form-modern" id="form-ejemplo">
+                        <div class="form-grid grid-4">
 
-                <div class="sidebar-footer">
-                    <button class="btn-icon" onclick="toggleSidebar()" aria-controls="sidebar" aria-expanded="true">
-                        <span class="material-icons" id="collapseIcon" aria-hidden="true">chevron_left</span>
-                        <span class="sr-only">Contraer/Expandir sidebar</span>
-                    </button>
-                </div>
-            </aside>
-
-            <!-- Contenido principal -->
-            <div class="main" id="main-content">
-
-                <!-- header -->
-                <header class="navbar" role="banner">
-                    <button class="btn-icon" onclick="toggleSidebar()" aria-controls="sidebar" aria-expanded="true">
-                        <span class="material-icons" aria-hidden="true">menu</span>
-                        <span class="sr-only">Abrir menú</span>
-                    </button>
-                    <div class="navbar-title">Mi Dashboard</div>
-                </header>
-
-                <!-- cuerpo de la página  -->
-                <section class="content" role="main">
-
-                    <!-- Bienvenida -->
-                    <div class="card">
-                        <h2>Hola 👋</h2>
-                        <p>Este es un dashboard de ejemplo con un sidebar moderno y responsive versión 9-11.</p>
-                    </div>
-
-                    <!-- Formulario -->
-                    <div class="card">
-                        <h2>Formularios</h2>
-                        <form class="form-modern" id="form-ejemplo">
-                            <div class="form-grid grid-4">
-
-                                <!-- Nombre completo -->
-                                <div class="input-group">
-                                    <label for="nombre">Nombre completo</label>
-                                    <div class="input-icon input-icon-name">
-                                        <input type="text" id="nombre" name="nombre" placeholder="Juan Pérez"
-                                            required />
-                                    </div>
-                                </div>
-
-                                <!-- Correo electrónico -->
-                                <div class="input-group">
-                                    <label for="email">Correo electrónico</label>
-                                    <div class="input-icon input-icon-email">
-                                        <input id="email" name="email" placeholder="usuario@correo.com" />
-                                    </div>
-                                </div>
-
-                                <!-- Fecha de nacimiento -->
-                                <div class="input-group">
-                                    <label for="fecha">Fecha de nacimiento</label>
-                                    <div class="input-icon input-icon-date">
-                                        <input id="fecha" name="fecha" />
-                                    </div>
-                                </div>
-
-                                <!-- Teléfono -->
-                                <div class="input-group">
-                                    <label for="telefono">Teléfono</label>
-                                    <div class="input-icon input-icon-phone">
-                                        <input id="telefono" name="telefono" />
-                                    </div>
-                                </div>
-
-                                <!-- DNI -->
-                                <div class="input-group">
-                                    <label for="dni">DNI</label>
-                                    <div class="input-icon input-icon-dni">
-                                        <input id="dni" name="dni" />
-                                    </div>
-                                </div>
-
-                                <!-- Edad -->
-                                <div class="input-group">
-                                    <label for="edad">Edad</label>
-                                    <div class="input-icon input-icon-age">
-                                        <input id="edad" name="edad" />
-                                    </div>
-                                </div>
-
-                                <!-- CUIT -->
-                                <div class="input-group">
-                                    <label for="cuit">CUIT</label>
-                                    <div class="input-icon input-icon-cuit">
-                                        <input id="cuit" name="cuit" />
-                                    </div>
-                                </div>
-
-                                <!-- Provincia -->
-                                <div class="input-group">
-                                    <label for="provincia">Provincia</label>
-                                    <div class="input-icon input-icon-globe">
-                                        <select id="provincia" name="provincia" required>
-                                            <option value="">Seleccionar</option>
-                                            <option>Buenos Aires</option>
-                                            <option>Córdoba</option>
-                                            <option>Santa Fe</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <!-- Localidad -->
-                                <div class="input-group">
-                                    <label for="localidad">Localidad</label>
-                                    <div class="input-icon input-icon-city">
-                                        <input type="text" id="localidad" name="localidad" required />
-                                    </div>
-                                </div>
-
-                                <!-- Código Postal -->
-                                <div class="input-group">
-                                    <label for="cp">Código Postal</label>
-                                    <div class="input-icon input-icon-cp">
-                                        <input type="text" id="cp" name="cp" />
-                                    </div>
-                                </div>
-
-                                <!-- Dirección -->
-                                <div class="input-group">
-                                    <label for="direccion">Dirección</label>
-                                    <div class="input-icon input-icon-address">
-                                        <input type="text" id="direccion" name="direccion" required />
-                                    </div>
-                                </div>
-
-                                
-                            <!-- Frutas (múltiple) - Dropdown con checkboxes -->
-                                <div class="input-group">
-                                    <label for="frutas">Frutas (podés elegir varias)</label>
-                                    <div class="dropdown dropdown-multi" data-name="frutas">
-                                        <button type="button"
-                                                class="dropdown-toggle"
-                                                aria-haspopup="listbox"
-                                                aria-expanded="false">
-                                            Seleccioná frutas
-                                        </button>
-
-                                        <!-- valor serializado para enviar con el form -->
-                                        <input type="hidden" name="frutas" id="frutas" value="">
-
-                                        <div class="dropdown-panel" role="listbox" aria-label="Frutas disponibles">
-                                            <label class="dropdown-option">
-                                                <input type="checkbox" value="Manzana"> <span>Manzana</span>
-                                            </label>
-                                            <label class="dropdown-option">
-                                                <input type="checkbox" value="Banana"> <span>Banana</span>
-                                            </label>
-                                            <label class="dropdown-option">
-                                                <input type="checkbox" value="Naranja"> <span>Naranja</span>
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Fruta principal (una sola) - Select nativo -->
-                                <div class="input-group">
-                                    <label for="fruta_principal">Fruta principal</label>
-                                    <div class="input-icon">
-                                        <span class="material-icons" aria-hidden="true">local_grocery_store</span>
-                                        <select id="fruta_principal" name="fruta_principal" required>
-                                            <option value="">Seleccionar</option>
-                                            <option value="Manzana">Manzana</option>
-                                            <option value="Banana">Banana</option>
-                                            <option value="Naranja">Naranja</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Observaciones -->
+                            <!-- Nombre completo -->
                             <div class="input-group">
-                                <label for="observaciones">Observaciones</label>
-                                <div class="input-icon input-icon-comment">
-                                    <textarea id="observaciones" name="observaciones" maxlength="233" rows="3"
-                                        placeholder="Escribí un comentario..."></textarea>
-                                </div>
-                                <small class="char-count" data-for="observaciones">Quedan 233 caracteres.</small>
-                            </div>
-
-                            <!-- Botones -->
-                            <div class="form-buttons">
-                                <button class="btn btn-aceptar" type="submit">Enviar</button>
-                                <button class="btn btn-cancelar" type="reset">Cancelar</button>
-                            </div>
-                        </form>
-                    </div>
-
-                    <!-- Tabla -->
-                    <div class="card tabla-card">
-                        <h2>Tablas</h2>
-                        <div class="tabla-wrapper">
-                            <table class="data-table" role="table">
-                                <thead>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>Nombre</th>
-                                        <th>Apellido</th>
-                                        <th>Apodo</th>
-                                        <th>Edad</th>
-                                        <th>Genero</th>
-                                        <th>Estado civil</th>
-                                        <th>Antecedentes</th>
-                                        <th>Email</th>
-                                        <th>Rol</th>
-                                        <th>Estado</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Carlos</td>
-                                        <td>Ruiz</td>
-                                        <td>Carlos</td>
-                                        <td>19</td>
-                                        <td>Masculino</td>
-                                        <td>Soltero</td>
-                                        <td>Sin precedentes</td>
-                                        <td>carlos@mail.com</td>
-                                        <td>Administrador</td>
-                                        <td><span class="badge success">Activo</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>Laura</td>
-                                        <td>Méndez</td>
-                                        <td>Laura</td>
-                                        <td>22</td>
-                                        <td>Femenino</td>
-                                        <td>Soltera</td>
-                                        <td>Con antecedentes</td>
-                                        <td>laura@mail.com</td>
-                                        <td>Editor</td>
-                                        <td><span class="badge warning">Pendiente</span></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-
-                    <!-- Tarjeta alertas emergentes -->
-                    <div class="card">
-                        <h2>Botones</h2>
-                        <br>
-                        <div class="form-grid grid-3">
-                            <button class="btn btn-aceptar"
-                                onclick="showAlert('success', '¡Operación completada con éxito!')">Mostrar
-                                Success</button>
-                            <button class="btn btn-cancelar"
-                                onclick="showAlert('error', 'Ha ocurrido un error inesperado.')">Mostrar Error</button>
-                            <button class="btn btn-info"
-                                onclick="showAlert('info', 'Este es un mensaje informativo.')">Mostrar Info</button>
-                        </div>
-
-                        <br>
-                        <div class="form-grid grid-3">
-                            <button class="btn btn-aceptar"
-                                onclick="showToast('success', 'Formulario enviado correctamente');">Mostrar Toast
-                                Success</button>
-                            <button class="btn btn-cancelar"
-                                onclick="showToast('error', 'Error al enviar el formulario');">Mostrar Toast
-                                Error</button>
-                            <button class="btn btn-info" onclick="showToast('info', 'Tenés campos pendientes');">Mostrar
-                                Toast Info</button>
-                        </div>
-
-                        <br>
-                        <div class="form-grid grid-3">
-                            <button class="btn btn-aceptar"
-                                onclick="showToastBoton('success', 'Formulario enviado correctamente');">Mostrar Toast
-                                Success con botón</button>
-                            <button class="btn btn-cancelar"
-                                onclick="showToastBoton('error', 'Error al enviar el formulario');">Mostrar Toast Error
-                                con botón</button>
-                            <button class="btn btn-info"
-                                onclick="showToastBoton('info', 'Tenés campos pendientes');">Mostrar Toast Info con
-                                botón</button>
-                        </div>
-                    </div>
-
-                    <!-- tarjeta de prueba modal -->
-                    <div class="card">
-                        <h2>Modales</h2>
-                        <p>Hacé clic en el botón para abrir un modal:</p>
-                        <div class="form-buttons">
-                            <button class="btn btn-info" onclick="openModal()">Abrir modal</button>
-                        </div>
-                    </div>
-
-                    <!-- Varias tarjetas apiladas -->
-                    <div class="card card-neutral">
-                        <h2>Distribución de tarjetas</h2>
-
-                        <div class="card-grid grid-2">
-                            <div class="card">
-                                <h3>Tarjeta 1</h3>
-                                <div class="input-group">
-                                    <label for="notificaciones">Switch de ejemplo</label>
-                                    <label class="switch">
-                                        <input type="checkbox" id="notificaciones" aria-label="Activar notificaciones">
-                                        <span class="slider"></span>
-                                    </label>
+                                <label for="nombre">Nombre completo</label>
+                                <div class="input-icon input-icon-name">
+                                    <input type="text" id="nombre" name="nombre" placeholder="Juan Pérez" required />
                                 </div>
                             </div>
 
-                            <div class="card">
-                                <h3>Tarjeta 2</h3>
-                                <div class="accordion" role="region" aria-label="Acordeón de ejemplo">
-                                    <div class="accordion-header" onclick="toggleAccordion(this)" role="button"
+                            <!-- Correo electrónico -->
+                            <div class="input-group">
+                                <label for="email">Correo electrónico</label>
+                                <div class="input-icon input-icon-email">
+                                    <input id="email" name="email" placeholder="usuario@correo.com" />
+                                </div>
+                            </div>
+
+                            <!-- Fecha de nacimiento -->
+                            <div class="input-group">
+                                <label for="fecha">Fecha de nacimiento</label>
+                                <div class="input-icon input-icon-date">
+                                    <input id="fecha" name="fecha" />
+                                </div>
+                            </div>
+
+                            <!-- Teléfono -->
+                            <div class="input-group">
+                                <label for="telefono">Teléfono</label>
+                                <div class="input-icon input-icon-phone">
+                                    <input id="telefono" name="telefono" />
+                                </div>
+                            </div>
+
+                            <!-- DNI -->
+                            <div class="input-group">
+                                <label for="dni">DNI</label>
+                                <div class="input-icon input-icon-dni">
+                                    <input id="dni" name="dni" />
+                                </div>
+                            </div>
+
+                            <!-- Edad -->
+                            <div class="input-group">
+                                <label for="edad">Edad</label>
+                                <div class="input-icon input-icon-age">
+                                    <input id="edad" name="edad" />
+                                </div>
+                            </div>
+
+                            <!-- CUIT -->
+                            <div class="input-group">
+                                <label for="cuit">CUIT</label>
+                                <div class="input-icon input-icon-cuit">
+                                    <input id="cuit" name="cuit" />
+                                </div>
+                            </div>
+
+                            <!-- Provincia -->
+                            <div class="input-group">
+                                <label for="provincia">Provincia</label>
+                                <div class="input-icon input-icon-globe">
+                                    <select id="provincia" name="provincia" required>
+                                        <option value="">Seleccionar</option>
+                                        <option>Buenos Aires</option>
+                                        <option>Córdoba</option>
+                                        <option>Santa Fe</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- Localidad -->
+                            <div class="input-group">
+                                <label for="localidad">Localidad</label>
+                                <div class="input-icon input-icon-city">
+                                    <input type="text" id="localidad" name="localidad" required />
+                                </div>
+                            </div>
+
+                            <!-- Código Postal -->
+                            <div class="input-group">
+                                <label for="cp">Código Postal</label>
+                                <div class="input-icon input-icon-cp">
+                                    <input type="text" id="cp" name="cp" />
+                                </div>
+                            </div>
+
+                            <!-- Dirección -->
+                            <div class="input-group">
+                                <label for="direccion">Dirección</label>
+                                <div class="input-icon input-icon-address">
+                                    <input type="text" id="direccion" name="direccion" required />
+                                </div>
+                            </div>
+
+
+                            <!-- Frutas (múltiple) - Dropdown con checkboxes -->
+                            <div class="input-group">
+                                <label for="frutas">Frutas (podés elegir varias)</label>
+                                <div class="dropdown dropdown-multi" data-name="frutas">
+                                    <button type="button" class="dropdown-toggle" aria-haspopup="listbox"
                                         aria-expanded="false">
-                                        <span>Acordeón desplegable</span>
-                                        <span class="material-icons" aria-hidden="true">expand_more</span>
+                                        Seleccioná frutas
+                                    </button>
+
+                                    <!-- valor serializado para enviar con el form -->
+                                    <input type="hidden" name="frutas" id="frutas" value="">
+
+                                    <div class="dropdown-panel" role="listbox" aria-label="Frutas disponibles">
+                                        <label class="dropdown-option">
+                                            <input type="checkbox" value="Manzana"> <span>Manzana</span>
+                                        </label>
+                                        <label class="dropdown-option">
+                                            <input type="checkbox" value="Banana"> <span>Banana</span>
+                                        </label>
+                                        <label class="dropdown-option">
+                                            <input type="checkbox" value="Naranja"> <span>Naranja</span>
+                                        </label>
                                     </div>
-                                    <div class="accordion-body">
-                                        <p>Al hacer click, se va a mostrar el contenido dentro de este acordeón</p>
-                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Fruta principal (una sola) - Select nativo -->
+                            <div class="input-group">
+                                <label for="fruta_principal">Fruta principal</label>
+                                <div class="input-icon">
+                                    <span class="material-icons" aria-hidden="true">local_grocery_store</span>
+                                    <select id="fruta_principal" name="fruta_principal" required>
+                                        <option value="">Seleccionar</option>
+                                        <option value="Manzana">Manzana</option>
+                                        <option value="Banana">Banana</option>
+                                        <option value="Naranja">Naranja</option>
+                                    </select>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="card-grid grid-3">
-                            <div class="card selector-list">
-                                <h3>Selector Multiple</h3>
-                                <hr />
-                                <label><input type="checkbox" checked /><span>Boots</span></label>
-                                <label><input type="checkbox" /><span>Clogs</span></label>
-                                <label><input type="checkbox" checked /><span>Loafers</span></label>
-                                <label><input type="checkbox" /><span>Moccasins</span></label>
-                                <label><input type="checkbox" checked /><span>Sneakers</span></label>
+                        <!-- Observaciones -->
+                        <div class="input-group">
+                            <label for="observaciones">Observaciones</label>
+                            <div class="input-icon input-icon-comment">
+                                <textarea id="observaciones" name="observaciones" maxlength="233" rows="3"
+                                    placeholder="Escribí un comentario..."></textarea>
                             </div>
-
-                            <div class="card selector-list">
-                                <h3>Selector simple</h3>
-                                <hr />
-                                <label><input type="radio" name="shoes" /><span>Boots</span></label>
-                                <label><input type="radio" name="shoes" /><span>Clogs</span></label>
-                                <label><input type="radio" name="shoes" /><span>Loafers</span></label>
-                                <label><input type="radio" name="shoes" checked /><span>Moccasins</span></label>
-                                <label><input type="radio" name="shoes" /><span>Sneakers</span></label>
-                                <small>Option selected: Moccasins</small>
-                            </div>
-
-                            <div class="card smart-selector">
-                                <h3>Selector con buscador incorporado</h3>
-                                <hr />
-                                <input type="text" class="smart-selector-search" placeholder="Buscar topping...">
-                                <div class="smart-selector-list">
-                                    <label><input type="checkbox" name="toppings" value="pepperoni"> Pepperoni</label>
-                                    <label><input type="checkbox" name="toppings" value="extracheese"> Extra
-                                        Cheese</label>
-                                    <label><input type="checkbox" name="toppings" value="mushroom"> Mushroom</label>
-                                    <label><input type="checkbox" name="toppings" value="onion"> Onion</label>
-                                    <label><input type="checkbox" name="toppings" value="tomato"> Tomato</label>
-                                    <label><input type="checkbox" name="toppings" value="bacon"> Bacon</label>
-                                    <label><input type="checkbox" name="toppings" value="olives"> Olives</label>
-                                    <label><input type="checkbox" name="toppings" value="spinach"> Spinach</label>
-                                </div>
-                            </div>
+                            <small class="char-count" data-for="observaciones">Quedan 233 caracteres.</small>
                         </div>
 
-                        <div class="card-grid grid-4">
-                            <div class="card">
-                                <h3>Tarjeta 1</h3>
-                                <p>Contenido 1</p>
-                            </div>
-                            <div class="card">
-                                <h3>Prueba de Spinner</h3>
-                                <button class="btn btn-info" onclick="probarSpinner()">Proba el Spinner</button>
-                            </div>
-                            <div class="card">
-                                <h3>Tarjeta 3</h3>
-                                <p>Contenido 3</p>
-                            </div>
-                            <div class="card">
-                                <h3>Tarjeta 4</h3>
-                                <p>Proba el tooltip</p>
-                                <button class="btn btn-info" data-tooltip="Botón para guardar">Guardar</button>
-                            </div>
+                        <!-- Botones -->
+                        <div class="form-buttons">
+                            <button class="btn btn-aceptar" type="submit">Enviar</button>
+                            <button class="btn btn-cancelar" type="reset">Cancelar</button>
                         </div>
-                    </div>
-
-                    <!-- tabs -->
-                    <div class="card">
-                        <h2>Tabulaciones</h2>
-                        <div class="tabs">
-                            <div class="tab-buttons">
-                                <button class="tab-button active" data-tab="tab1">General</button>
-                                <button class="tab-button" data-tab="tab2">Opciones</button>
-                                <button class="tab-button" data-tab="tab3">Avanzado</button>
-                            </div>
-                            <div class="tab-content active" id="tab1">
-                                <p>Contenido de la pestaña General.</p>
-                            </div>
-                            <div class="tab-content" id="tab2">
-                                <p>Contenido de la pestaña Opciones.</p>
-                            </div>
-                            <div class="tab-content" id="tab3">
-                                <p>Contenido de la pestaña Avanzado.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Tarjetas de usuarios -->
-                    <div class="card">
-                        <h2>Tarjetas de usuarios</h2>
-                        <div class="card-grid grid-4">
-                            <div class="user-card">
-                                <h3 class="user-name">NOMBRE USUARIO</h3>
-                                <div class="user-info">
-                                    <span class="material-icons icon-email" aria-hidden="true">mail</span>
-                                    <span class="user-email">Correo electrónico</span>
-                                </div>
-                                <button class="btn btn-info">Guardar</button>
-                            </div>
-
-                            <div class="user-card">
-                                <h3 class="user-name">NOMBRE USUARIO</h3>
-                                <div class="user-info">
-                                    <span class="material-icons icon-email" aria-hidden="true">mail</span>
-                                    <span class="user-email">Correo electrónico</span>
-                                </div>
-                                <button class="btn btn-info">Guardar</button>
-                            </div>
-
-                            <div class="user-card">
-                                <h3 class="user-name">NOMBRE USUARIO</h3>
-                                <div class="user-info">
-                                    <span class="material-icons icon-email" aria-hidden="true">mail</span>
-                                    <span class="user-email">Correo electrónico</span>
-                                </div>
-                                <button class="btn btn-info">Guardar</button>
-                            </div>
-
-                            <div class="user-card">
-                                <h3 class="user-name">NOMBRE USUARIO</h3>
-                                <div class="user-info">
-                                    <span class="material-icons icon-email" aria-hidden="true">mail</span>
-                                    <span class="user-email">Correo electrónico</span>
-                                </div>
-                                <button class="btn btn-info">Guardar</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- SECCIÓN TRIPLE PARA CREAR PUBLICACIONES Y PREVISUALIZARLAS -->
-                    <div class="triple-layout">
-                        <!-- Columna izquierda: categorías -->
-                        <div class="triple-categorias">
-                            <h3>Categorías</h3>
-                            <ul class="accordion-categorias">
-                                <li>
-                                    <button class="categoria-btn" onclick="toggleSubcategorias(this)"
-                                        aria-expanded="false">Electrónica</button>
-                                    <ul class="subcategorias">
-                                        <li>Celulares</li>
-                                        <li>TVs</li>
-                                        <li>Audio</li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <button class="categoria-btn" onclick="toggleSubcategorias(this)"
-                                        aria-expanded="false">Moda</button>
-                                    <ul class="subcategorias">
-                                        <li>Hombre</li>
-                                        <li>Mujer</li>
-                                        <li>Niños</li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <button class="categoria-btn" onclick="toggleSubcategorias(this)"
-                                        aria-expanded="false">Hogar</button>
-                                    <ul class="subcategorias">
-                                        <li>Cocina</li>
-                                        <li>Deco</li>
-                                        <li>Muebles</li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <button class="categoria-btn" onclick="toggleSubcategorias(this)"
-                                        aria-expanded="false">Juguetes</button>
-                                    <ul class="subcategorias">
-                                        <li>Muñecos</li>
-                                        <li>Didácticos</li>
-                                        <li>Exterior</li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <button class="categoria-btn" onclick="toggleSubcategorias(this)"
-                                        aria-expanded="false">Libros</button>
-                                    <ul class="subcategorias">
-                                        <li>Infantiles</li>
-                                        <li>Novelas</li>
-                                        <li>Técnicos</li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <!-- 📝 Formulario para nueva publicación -->
-                        <div class="triple-derecha">
-                            <div class="triple-form">
-                                <h3>Publicar nueva entrada</h3>
-                                <form class="form-grid grid-4" id="form-publicacion" enctype="multipart/form-data">
-                                    <!-- Título -->
-                                    <div class="input-group">
-                                        <label for="titulo">Título</label>
-                                        <div class="input-icon">
-                                            <span class="material-icons" aria-hidden="true">title</span>
-                                            <input type="text" name="titulo" id="titulo" required>
-                                        </div>
-                                    </div>
-
-                                    <!-- Subtítulo -->
-                                    <div class="input-group">
-                                        <label for="subtitulo">Subtítulo</label>
-                                        <div class="input-icon">
-                                            <span class="material-icons" aria-hidden="true">subtitles</span>
-                                            <input type="text" name="subtitulo" id="subtitulo" required>
-                                        </div>
-                                    </div>
-
-                                    <!-- Autor -->
-                                    <div class="input-group">
-                                        <label for="autor">Autor</label>
-                                        <div class="input-icon">
-                                            <span class="material-icons" aria-hidden="true">person</span>
-                                            <input type="text" name="autor" id="autor" required>
-                                        </div>
-                                    </div>
-
-                                    <!-- Archivo -->
-                                    <div class="input-group">
-                                        <label for="archivo">Archivo</label>
-                                        <div class="input-icon">
-                                            <span class="material-icons" aria-hidden="true">attach_file</span>
-                                            <input type="file" name="archivo" id="archivo" accept=".pdf">
-                                        </div>
-                                    </div>
-
-                                    <!-- Descripción -->
-                                    <div class="input-group" style="grid-column: span 4;">
-                                        <label for="descripcion">Descripción</label>
-                                        <textarea name="descripcion" id="descripcion" rows="4"
-                                            placeholder="Descripción de la publicación..." required></textarea>
-                                    </div>
-
-                                    <!-- Botón guardar -->
-                                    <div style="grid-column: span 4; text-align: right;">
-                                        <button type="submit" class="btn btn-disabled" id="btn-guardar" disabled>Guardar
-                                            publicación</button>
-                                    </div>
-                                </form>
-                            </div>
-
-                            <!-- Fila inferior: tarjeta de ejemplo -->
-                            <div class="triple-tarjetas card-grid grid-3">
-                                <div class="product-card">
-                                    <div class="product-header">
-                                        <h4>Titulo</h4>
-                                        <p>Subtitulo</p>
-                                    </div>
-                                    <div class="product-body">
-                                        <div class="user-info product-top">
-                                            <span class="material-icons avatar download-icon"
-                                                aria-hidden="true">download</span>
-                                            <div>
-                                                <strong>Autor</strong>
-                                                <div class="role">Fecha de publicación</div>
-                                            </div>
-                                        </div>
-
-                                        <p class="description">
-                                            Esta es una descripción resumida de la publicación que se mostrará en la
-                                            tarjeta. Solo se mostrarán las primeras líneas.
-                                        </p>
-
-                                        <hr />
-
-                                        <div class="product-footer">
-                                            <div class="metric">
-                                                <strong>245</strong><span>Vistas</span>
-                                            </div>
-                                            <div class="metric">
-                                                <strong>1085</strong><span>Descargas</span>
-                                            </div>
-                                            <button class="btn-view">Ver publicación</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div><!-- /triple-layout -->
-
-                    <!-- Alert -->
-                    <div class="alert-container" id="alertContainer" aria-live="polite"></div>
-                </section>
-            </div>
-        </div>
-
-        <!-- Spinner Global -->
-        <div id="globalSpinner" class="spinner-overlay hidden" role="status" aria-live="assertive"
-            aria-label="Cargando">
-            <div class="spinner"></div>
-        </div>
-
-        <!-- Modal -->
-        <div id="modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-            <div class="modal-content">
-                <h3 id="modal-title">Título del modal</h3>
-                <p>Este es un ejemplo de modal simple y responsive.</p>
-                <div class="form-buttons">
-                    <button class="btn btn-aceptar" onclick="closeModal()">Aceptar</button>
-                    <button class="btn btn-cancelar" onclick="closeModal()">Cancelar</button>
+                    </form>
                 </div>
+
+                <!-- Tabla -->
+                <div class="card tabla-card">
+                    <h2>Tablas</h2>
+                    <div class="tabla-wrapper">
+                        <table class="data-table" role="table">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Nombre</th>
+                                    <th>Apellido</th>
+                                    <th>Apodo</th>
+                                    <th>Edad</th>
+                                    <th>Genero</th>
+                                    <th>Estado civil</th>
+                                    <th>Antecedentes</th>
+                                    <th>Email</th>
+                                    <th>Rol</th>
+                                    <th>Estado</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Carlos</td>
+                                    <td>Ruiz</td>
+                                    <td>Carlos</td>
+                                    <td>19</td>
+                                    <td>Masculino</td>
+                                    <td>Soltero</td>
+                                    <td>Sin precedentes</td>
+                                    <td>carlos@mail.com</td>
+                                    <td>Administrador</td>
+                                    <td><span class="badge success">Activo</span></td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Laura</td>
+                                    <td>Méndez</td>
+                                    <td>Laura</td>
+                                    <td>22</td>
+                                    <td>Femenino</td>
+                                    <td>Soltera</td>
+                                    <td>Con antecedentes</td>
+                                    <td>laura@mail.com</td>
+                                    <td>Editor</td>
+                                    <td><span class="badge warning">Pendiente</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Tarjeta alertas emergentes -->
+                <div class="card">
+                    <h2>Botones</h2>
+                    <br>
+                    <div class="form-grid grid-3">
+                        <button class="btn btn-aceptar"
+                            onclick="showAlert('success', '¡Operación completada con éxito!')">Mostrar
+                            Success</button>
+                        <button class="btn btn-cancelar"
+                            onclick="showAlert('error', 'Ha ocurrido un error inesperado.')">Mostrar Error</button>
+                        <button class="btn btn-info"
+                            onclick="showAlert('info', 'Este es un mensaje informativo.')">Mostrar Info</button>
+                    </div>
+
+                    <br>
+                    <div class="form-grid grid-3">
+                        <button class="btn btn-aceptar"
+                            onclick="showToast('success', 'Formulario enviado correctamente');">Mostrar Toast
+                            Success</button>
+                        <button class="btn btn-cancelar"
+                            onclick="showToast('error', 'Error al enviar el formulario');">Mostrar Toast
+                            Error</button>
+                        <button class="btn btn-info" onclick="showToast('info', 'Tenés campos pendientes');">Mostrar
+                            Toast Info</button>
+                    </div>
+
+                    <br>
+                    <div class="form-grid grid-3">
+                        <button class="btn btn-aceptar"
+                            onclick="showToastBoton('success', 'Formulario enviado correctamente');">Mostrar Toast
+                            Success con botón</button>
+                        <button class="btn btn-cancelar"
+                            onclick="showToastBoton('error', 'Error al enviar el formulario');">Mostrar Toast Error
+                            con botón</button>
+                        <button class="btn btn-info"
+                            onclick="showToastBoton('info', 'Tenés campos pendientes');">Mostrar Toast Info con
+                            botón</button>
+                    </div>
+                </div>
+
+                <!-- tarjeta de prueba modal -->
+                <div class="card">
+                    <h2>Modales</h2>
+                    <p>Hacé clic en el botón para abrir un modal:</p>
+                    <div class="form-buttons">
+                        <button class="btn btn-info" onclick="openModal()">Abrir modal</button>
+                    </div>
+                </div>
+
+                <!-- Varias tarjetas apiladas -->
+                <div class="card card-neutral">
+                    <h2>Distribución de tarjetas</h2>
+
+                    <div class="card-grid grid-2">
+                        <div class="card">
+                            <h3>Tarjeta 1</h3>
+                            <div class="input-group">
+                                <label for="notificaciones">Switch de ejemplo</label>
+                                <label class="switch">
+                                    <input type="checkbox" id="notificaciones" aria-label="Activar notificaciones">
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <h3>Tarjeta 2</h3>
+                            <div class="accordion" role="region" aria-label="Acordeón de ejemplo">
+                                <div class="accordion-header" onclick="toggleAccordion(this)" role="button"
+                                    aria-expanded="false">
+                                    <span>Acordeón desplegable</span>
+                                    <span class="material-icons" aria-hidden="true">expand_more</span>
+                                </div>
+                                <div class="accordion-body">
+                                    <p>Al hacer click, se va a mostrar el contenido dentro de este acordeón</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-grid grid-3">
+                        <div class="card selector-list">
+                            <h3>Selector Multiple</h3>
+                            <hr />
+                            <label><input type="checkbox" checked /><span>Boots</span></label>
+                            <label><input type="checkbox" /><span>Clogs</span></label>
+                            <label><input type="checkbox" checked /><span>Loafers</span></label>
+                            <label><input type="checkbox" /><span>Moccasins</span></label>
+                            <label><input type="checkbox" checked /><span>Sneakers</span></label>
+                        </div>
+
+                        <div class="card selector-list">
+                            <h3>Selector simple</h3>
+                            <hr />
+                            <label><input type="radio" name="shoes" /><span>Boots</span></label>
+                            <label><input type="radio" name="shoes" /><span>Clogs</span></label>
+                            <label><input type="radio" name="shoes" /><span>Loafers</span></label>
+                            <label><input type="radio" name="shoes" checked /><span>Moccasins</span></label>
+                            <label><input type="radio" name="shoes" /><span>Sneakers</span></label>
+                            <small>Option selected: Moccasins</small>
+                        </div>
+
+                        <div class="card smart-selector">
+                            <h3>Selector con buscador incorporado</h3>
+                            <hr />
+                            <input type="text" class="smart-selector-search" placeholder="Buscar topping...">
+                            <div class="smart-selector-list">
+                                <label><input type="checkbox" name="toppings" value="pepperoni"> Pepperoni</label>
+                                <label><input type="checkbox" name="toppings" value="extracheese"> Extra
+                                    Cheese</label>
+                                <label><input type="checkbox" name="toppings" value="mushroom"> Mushroom</label>
+                                <label><input type="checkbox" name="toppings" value="onion"> Onion</label>
+                                <label><input type="checkbox" name="toppings" value="tomato"> Tomato</label>
+                                <label><input type="checkbox" name="toppings" value="bacon"> Bacon</label>
+                                <label><input type="checkbox" name="toppings" value="olives"> Olives</label>
+                                <label><input type="checkbox" name="toppings" value="spinach"> Spinach</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-grid grid-4">
+                        <div class="card">
+                            <h3>Tarjeta 1</h3>
+                            <p>Contenido 1</p>
+                        </div>
+                        <div class="card">
+                            <h3>Prueba de Spinner</h3>
+                            <button class="btn btn-info" onclick="probarSpinner()">Proba el Spinner</button>
+                        </div>
+                        <div class="card">
+                            <h3>Tarjeta 3</h3>
+                            <p>Contenido 3</p>
+                        </div>
+                        <div class="card">
+                            <h3>Tarjeta 4</h3>
+                            <p>Proba el tooltip</p>
+                            <button class="btn btn-info" data-tooltip="Botón para guardar">Guardar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- tabs -->
+                <div class="card">
+                    <h2>Tabulaciones</h2>
+                    <div class="tabs">
+                        <div class="tab-buttons">
+                            <button class="tab-button active" data-tab="tab1">General</button>
+                            <button class="tab-button" data-tab="tab2">Opciones</button>
+                            <button class="tab-button" data-tab="tab3">Avanzado</button>
+                        </div>
+                        <div class="tab-content active" id="tab1">
+                            <p>Contenido de la pestaña General.</p>
+                        </div>
+                        <div class="tab-content" id="tab2">
+                            <p>Contenido de la pestaña Opciones.</p>
+                        </div>
+                        <div class="tab-content" id="tab3">
+                            <p>Contenido de la pestaña Avanzado.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tarjetas de usuarios -->
+                <div class="card">
+                    <h2>Tarjetas de usuarios</h2>
+                    <div class="card-grid grid-4">
+                        <div class="user-card">
+                            <h3 class="user-name">NOMBRE USUARIO</h3>
+                            <div class="user-info">
+                                <span class="material-icons icon-email" aria-hidden="true">mail</span>
+                                <span class="user-email">Correo electrónico</span>
+                            </div>
+                            <button class="btn btn-info">Guardar</button>
+                        </div>
+
+                        <div class="user-card">
+                            <h3 class="user-name">NOMBRE USUARIO</h3>
+                            <div class="user-info">
+                                <span class="material-icons icon-email" aria-hidden="true">mail</span>
+                                <span class="user-email">Correo electrónico</span>
+                            </div>
+                            <button class="btn btn-info">Guardar</button>
+                        </div>
+
+                        <div class="user-card">
+                            <h3 class="user-name">NOMBRE USUARIO</h3>
+                            <div class="user-info">
+                                <span class="material-icons icon-email" aria-hidden="true">mail</span>
+                                <span class="user-email">Correo electrónico</span>
+                            </div>
+                            <button class="btn btn-info">Guardar</button>
+                        </div>
+
+                        <div class="user-card">
+                            <h3 class="user-name">NOMBRE USUARIO</h3>
+                            <div class="user-info">
+                                <span class="material-icons icon-email" aria-hidden="true">mail</span>
+                                <span class="user-email">Correo electrónico</span>
+                            </div>
+                            <button class="btn btn-info">Guardar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SECCIÓN TRIPLE PARA CREAR PUBLICACIONES Y PREVISUALIZARLAS -->
+                <div class="triple-layout">
+                    <!-- Columna izquierda: categorías -->
+                    <div class="triple-categorias">
+                        <h3>Categorías</h3>
+                        <ul class="accordion-categorias">
+                            <li>
+                                <button class="categoria-btn" onclick="toggleSubcategorias(this)"
+                                    aria-expanded="false">Electrónica</button>
+                                <ul class="subcategorias">
+                                    <li>Celulares</li>
+                                    <li>TVs</li>
+                                    <li>Audio</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <button class="categoria-btn" onclick="toggleSubcategorias(this)"
+                                    aria-expanded="false">Moda</button>
+                                <ul class="subcategorias">
+                                    <li>Hombre</li>
+                                    <li>Mujer</li>
+                                    <li>Niños</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <button class="categoria-btn" onclick="toggleSubcategorias(this)"
+                                    aria-expanded="false">Hogar</button>
+                                <ul class="subcategorias">
+                                    <li>Cocina</li>
+                                    <li>Deco</li>
+                                    <li>Muebles</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <button class="categoria-btn" onclick="toggleSubcategorias(this)"
+                                    aria-expanded="false">Juguetes</button>
+                                <ul class="subcategorias">
+                                    <li>Muñecos</li>
+                                    <li>Didácticos</li>
+                                    <li>Exterior</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <button class="categoria-btn" onclick="toggleSubcategorias(this)"
+                                    aria-expanded="false">Libros</button>
+                                <ul class="subcategorias">
+                                    <li>Infantiles</li>
+                                    <li>Novelas</li>
+                                    <li>Técnicos</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- 📝 Formulario para nueva publicación -->
+                    <div class="triple-derecha">
+                        <div class="triple-form">
+                            <h3>Publicar nueva entrada</h3>
+                            <form class="form-grid grid-4" id="form-publicacion" enctype="multipart/form-data">
+                                <!-- Título -->
+                                <div class="input-group">
+                                    <label for="titulo">Título</label>
+                                    <div class="input-icon">
+                                        <span class="material-icons" aria-hidden="true">title</span>
+                                        <input type="text" name="titulo" id="titulo" required>
+                                    </div>
+                                </div>
+
+                                <!-- Subtítulo -->
+                                <div class="input-group">
+                                    <label for="subtitulo">Subtítulo</label>
+                                    <div class="input-icon">
+                                        <span class="material-icons" aria-hidden="true">subtitles</span>
+                                        <input type="text" name="subtitulo" id="subtitulo" required>
+                                    </div>
+                                </div>
+
+                                <!-- Autor -->
+                                <div class="input-group">
+                                    <label for="autor">Autor</label>
+                                    <div class="input-icon">
+                                        <span class="material-icons" aria-hidden="true">person</span>
+                                        <input type="text" name="autor" id="autor" required>
+                                    </div>
+                                </div>
+
+                                <!-- Archivo -->
+                                <div class="input-group">
+                                    <label for="archivo">Archivo</label>
+                                    <div class="input-icon">
+                                        <span class="material-icons" aria-hidden="true">attach_file</span>
+                                        <input type="file" name="archivo" id="archivo" accept=".pdf">
+                                    </div>
+                                </div>
+
+                                <!-- Descripción -->
+                                <div class="input-group" style="grid-column: span 4;">
+                                    <label for="descripcion">Descripción</label>
+                                    <textarea name="descripcion" id="descripcion" rows="4"
+                                        placeholder="Descripción de la publicación..." required></textarea>
+                                </div>
+
+                                <!-- Botón guardar -->
+                                <div style="grid-column: span 4; text-align: right;">
+                                    <button type="submit" class="btn btn-disabled" id="btn-guardar" disabled>Guardar
+                                        publicación</button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- Fila inferior: tarjeta de ejemplo -->
+                        <div class="triple-tarjetas card-grid grid-3">
+                            <div class="product-card">
+                                <div class="product-header">
+                                    <h4>Titulo</h4>
+                                    <p>Subtitulo</p>
+                                </div>
+                                <div class="product-body">
+                                    <div class="user-info product-top">
+                                        <span class="material-icons avatar download-icon"
+                                            aria-hidden="true">download</span>
+                                        <div>
+                                            <strong>Autor</strong>
+                                            <div class="role">Fecha de publicación</div>
+                                        </div>
+                                    </div>
+
+                                    <p class="description">
+                                        Esta es una descripción resumida de la publicación que se mostrará en la
+                                        tarjeta. Solo se mostrarán las primeras líneas.
+                                    </p>
+
+                                    <hr />
+
+                                    <div class="product-footer">
+                                        <div class="metric">
+                                            <strong>245</strong><span>Vistas</span>
+                                        </div>
+                                        <div class="metric">
+                                            <strong>1085</strong><span>Descargas</span>
+                                        </div>
+                                        <button class="btn-view">Ver publicación</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- /triple-layout -->
+
+                <!-- Alert -->
+                <div class="alert-container" id="alertContainer" aria-live="polite"></div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Spinner Global -->
+    <div id="globalSpinner" class="spinner-overlay hidden" role="status" aria-live="assertive" aria-label="Cargando">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Modal -->
+    <div id="modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <div class="modal-content">
+            <h3 id="modal-title">Título del modal</h3>
+            <p>Este es un ejemplo de modal simple y responsive.</p>
+            <div class="form-buttons">
+                <button class="btn btn-aceptar" onclick="closeModal()">Aceptar</button>
+                <button class="btn btn-cancelar" onclick="closeModal()">Cancelar</button>
             </div>
         </div>
+    </div>
 
-        <!-- Framework JS -->
-        <script src="assets/javascript/framework.js"></script>
+    <!-- Framework JS -->
+    <script src="assets/javascript/framework.js"></script>
 
-        <!-- Spinner Global (CDN unificado con documentación) -->
-        <script src="https://www.fernandosalguero.com/cdn/assets/javascript/spinner-global.js"></script>
-
-        <!-- Funcion para probar el spinner -->
-        <script>
-            function probarSpinner() {
-                showSpinner();
-                setTimeout(() => { hideSpinner(); }, 3000);
-            }
-        </script>
-    </body>
+    <!-- Funcion para probar el spinner -->
+    <script>
+        function probarSpinner() {
+            showSpinner();
+            setTimeout(() => { hideSpinner(); }, 3000);
+        }
+    </script>
+</body>
 
 </html>

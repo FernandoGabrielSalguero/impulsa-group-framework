@@ -726,6 +726,16 @@ body {
     display: none;
 }
 
+/* Estados abiertos por clase (evita estilos inline desde JS) */
+.accordion.open .accordion-body {
+    display: block;
+}
+
+.subcategorias.open {
+    display: block;
+}
+
+
 /* ---------- Selector simple / múltiple ---------- */
 .selector-list label {
     display: flex;
@@ -800,17 +810,21 @@ body {
     gap: 0.8rem;
 }
 
-.toast {
-    min-width: 250px;
-    padding: 1rem 1.2rem;
-    border-radius: 8px;
-    color: #fff;
-    font-weight: 500;
-    box-shadow: var(--shadow);
-    animation: fadeInRight 0.4s ease, fadeOut 0.4s ease 4.5s forwards;
-    opacity: 1;
-    transform: translateX(0);
+/* Base compartida para toasts (DRY) */
+.toast,
+.toast-boton {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    animation: fadeInRight 0.4s ease;
 }
+
+/* Solo los toasts auto-ocultables animan salida */
+.toast {
+    animation: fadeInRight 0.4s ease, fadeOut 0.4s ease 4.5s forwards;
+}
+
 
 .toast.success {
     background-color: #4caf50;
